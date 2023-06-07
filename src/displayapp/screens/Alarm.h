@@ -21,6 +21,7 @@
 #include "systemtask/SystemTask.h"
 #include "displayapp/LittleVgl.h"
 #include "components/alarm/AlarmController.h"
+#include "components/motor/MotorController.h"
 #include "displayapp/widgets/Counter.h"
 
 namespace Pinetime {

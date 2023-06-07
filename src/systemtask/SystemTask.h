@@ -21,12 +21,7 @@
 #include "buttonhandler/ButtonHandler.h"
 #include "buttonhandler/ButtonActions.h"
 
-#ifdef PINETIME_IS_RECOVERY
-  #include "displayapp/DisplayAppRecovery.h"
-#else
-  #include "components/settings/Settings.h"
-  #include "displayapp/DisplayApp.h"
-#endif
+#include "displayapp/DisplayAppInterface.h"
 
 #include "drivers/Watchdog.h"
 #include "systemtask/Messages.h"
@@ -68,7 +63,7 @@ namespace Pinetime {
                  Pinetime::Drivers::Bma421& motionSensor,
                  Controllers::Settings& settingsController,
                  Pinetime::Controllers::HeartRateController& heartRateController,
-                 Pinetime::Applications::DisplayApp& displayApp,
+                 Pinetime::Applications::DisplayAppInterface& displayApp,
                  Pinetime::Applications::HeartRateTask& heartRateApp,
                  Pinetime::Controllers::FS& fs,
                  Pinetime::Controllers::TouchHandler& touchHandler,
@@ -115,7 +110,7 @@ namespace Pinetime {
       Pinetime::Controllers::HeartRateController& heartRateController;
       Pinetime::Controllers::MotionController& motionController;
 
-      Pinetime::Applications::DisplayApp& displayApp;
+      Pinetime::Applications::DisplayAppInterface& displayApp;
       Pinetime::Applications::HeartRateTask& heartRateApp;
       Pinetime::Controllers::FS& fs;
       Pinetime::Controllers::TouchHandler& touchHandler;
