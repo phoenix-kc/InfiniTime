@@ -17,6 +17,7 @@
 #include "touchhandler/TouchHandler.h"
 
 #include "displayapp/Messages.h"
+#include "displayapp/DisplayAppInterface.h"
 #include "BootErrors.h"
 
 #include "utility/StaticStack.h"
@@ -45,7 +46,7 @@ namespace Pinetime {
   };
 
   namespace Applications {
-    class DisplayApp {
+    class DisplayApp : public DisplayAppInterface {
     public:
       enum class States { Idle, Running };
       enum class FullRefreshDirections { None, Up, Down, Left, Right, LeftAnim, RightAnim };
@@ -65,14 +66,14 @@ namespace Pinetime {
                  Pinetime::Controllers::BrightnessController& brightnessController,
                  Pinetime::Controllers::TouchHandler& touchHandler,
                  Pinetime::Controllers::FS& filesystem);
-      void Start(System::BootErrors error);
-      void PushMessage(Display::Messages msg);
+      void Start(System::BootErrors error) override;
+      void PushMessage(Display::Messages msg) override;
 
       void StartApp(Apps app, DisplayApp::FullRefreshDirections direction);
 
       void SetFullRefresh(FullRefreshDirections direction);
 
-      void Register(Pinetime::System::SystemTask* systemTask);
+      void Register(Pinetime::System::SystemTask* systemTask) override;
 
     private:
       Pinetime::Drivers::St7789& lcd;

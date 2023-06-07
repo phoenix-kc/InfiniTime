@@ -591,6 +591,7 @@ set(INCLUDE_FILES
         BootloaderVersion.h
         logging/Logger.h
         logging/NrfLogger.h
+        displayapp/DisplayAppInterface.h
         displayapp/DisplayApp.h
         displayapp/Messages.h
         displayapp/TouchEvents.h

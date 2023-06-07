@@ -13,6 +13,7 @@
 #include "displayapp/TouchEvents.h"
 #include "displayapp/Apps.h"
 #include "displayapp/Messages.h"
+#include "displayapp/DisplayAppInterface.h"
 
 namespace Pinetime {
   namespace Drivers {
@@ -41,7 +42,7 @@ namespace Pinetime {
   };
 
   namespace Applications {
-    class DisplayApp {
+    class DisplayApp : public DisplayAppInterface {
     public:
       DisplayApp(Drivers::St7789& lcd,
                  const Drivers::Cst816S&,
@@ -60,12 +61,12 @@ namespace Pinetime {
                  Pinetime::Controllers::FS& filesystem);
       void Start();
 
-      void Start(Pinetime::System::BootErrors) {
+      void Start(Pinetime::System::BootErrors) override {
         Start();
       };
 
-      void PushMessage(Pinetime::Applications::Display::Messages msg);
-      void Register(Pinetime::System::SystemTask* systemTask);
+      void PushMessage(Pinetime::Applications::Display::Messages msg) override;
+      void Register(Pinetime::System::SystemTask* systemTask) override;
 
     private:
       TaskHandle_t taskHandle;
