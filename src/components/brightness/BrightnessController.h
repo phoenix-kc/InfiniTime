@@ -15,7 +15,7 @@ namespace Pinetime {
       void Higher();
       void Step();
 
-      const char* GetIcon();
+      // const char* GetIcon();
       const char* ToString();
 
     private:

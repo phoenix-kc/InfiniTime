@@ -1,48 +1,78 @@
-#pragma once
+#ifndef SCREEN_H
+#define SCREEN_H
 
-#include <cstdint>
-#include "displayapp/TouchEvents.h"
+
+#include <vector>
 #include <lvgl/lvgl.h>
 
-namespace Pinetime {
-  namespace Applications {
-    class DisplayApp;
+#include "components/ComponentContainer.h"
 
-    namespace Screens {
-      class Screen {
-      private:
-        virtual void Refresh() {
-        }
+class ScreenGraph;
 
-      public:
-        explicit Screen() = default;
 
-        virtual ~Screen() = default;
 
-        static void RefreshTaskCallback(lv_task_t* task);
+class Screen
+{
+public:
 
-        bool IsRunning() const {
-          return running;
-        }
+        enum class SwipeDirection : uint8_t
+        {
+                None,
+                Left,
+                Right,
+                Up,
+                Down
+        };
 
-        /** @return false if the button hasn't been handled by the app, true if it has been handled */
-        virtual bool OnButtonPushed() {
-          return false;
-        }
+        Screen(ScreenGraph *screenGraph, ComponentContainer *components);
+        virtual ~Screen();
 
-        /** @return false if the event hasn't been handled by the app, true if it has been handled */
-        // Returning true will cancel lvgl tap
-        virtual bool OnTouchEvent(TouchEvents /*event*/) {
-          return false;
-        }
+        ScreenGraph *screenGraph() { return _screenGraph; }
+        ComponentContainer *components() { return _components; }
 
-        virtual bool OnTouchEvent(uint16_t /*x*/, uint16_t /*y*/) {
-          return false;
-        }
+        bool isRunning() const { return _isRunning; }
 
-      protected:
-        bool running = true;
-      };
-    }
-  }
-}
+        virtual lv_color_t backgroundColor() const { return lv_color_hex(0x000000); }
+        virtual lv_color_t foregroundColor() const { return lv_color_hex(0xffffff); }
+
+        virtual bool isMultiPageScreen() const { return false; }
+        virtual uint8_t pageCount() const { return 1; }
+        uint8_t currentPage() const { return _currentPage; }
+        bool setCurrentPage(uint8_t value);
+
+        virtual void refresh();
+
+        virtual bool handleButtonPress();
+        virtual bool handleTap();
+        virtual bool handleLongTap();
+        virtual bool handleDoubleTap();
+        virtual bool handleSwipe(SwipeDirection direction);
+
+protected:
+
+        bool _isRunning;
+
+        lv_obj_t *createLabel(const lv_font_t *font, lv_color_t color, lv_label_align_t align, bool autoAlign);
+        lv_obj_t *createLabel(lv_obj_t *parent, const lv_font_t *font, lv_color_t color, lv_label_align_t align, bool autoAlign);
+
+        lv_obj_t *createTitleLabel(const char *title);
+
+        lv_obj_t *createButton(lv_coord_t width = 64, lv_coord_t height = 48);
+        lv_obj_t *createButton(lv_obj_t *parent, lv_coord_t width = 64, lv_coord_t height = 48);
+        lv_obj_t *createButton(const lv_font_t *iconFont, const char *icon, lv_coord_t width = 64, lv_coord_t height = 48);
+        lv_obj_t *createButton(lv_obj_t *parent, const lv_font_t *iconFont, const char *icon, lv_coord_t width = 64, lv_coord_t height = 48);
+
+        virtual void handleCurrentPageChange();
+        virtual void addPageNumberWidgets();
+
+private:
+
+        ScreenGraph *_screenGraph;
+        ComponentContainer *_components;
+
+        uint8_t _currentPage;
+
+        lv_style_t _buttonStyle;
+};
+
+#endif // SCREEN_H

@@ -289,9 +289,9 @@ set(LVGL_SRC
         libs/lvgl/src/lv_font/lv_font_loader.c
         # LVGL Fonts
         libs/lvgl/src/lv_font/lv_font_montserrat_14.c
-        libs/lvgl/src/lv_font/lv_font_montserrat_18.c
-        libs/lvgl/src/lv_font/lv_font_montserrat_22.c
-        libs/lvgl/src/lv_font/lv_font_montserrat_28.c
+        #libs/lvgl/src/lv_font/lv_font_montserrat_18.c
+        #libs/lvgl/src/lv_font/lv_font_montserrat_22.c
+        #libs/lvgl/src/lv_font/lv_font_montserrat_28.c
         #
         libs/lvgl/src/lv_hal/lv_hal_disp.c
         libs/lvgl/src/lv_hal/lv_hal_indev.c
@@ -363,77 +363,46 @@ set(QCBOR_SRC
         libs/QCBOR/src/UsefulBuf.c
         )
 
-list(APPEND IMAGE_FILES
-        displayapp/icons/battery/batteryicon.c
-        )
+#list(APPEND IMAGE_FILES
+#        displayapp/icons/battery/batteryicon.c
+#        )
 list(APPEND SOURCE_FILES
         stdlib.c
         FreeRTOS/heap_4_infinitime.c
         BootloaderVersion.cpp
         logging/NrfLogger.cpp
         displayapp/DisplayApp.cpp
-        displayapp/screens/Screen.cpp
-        displayapp/screens/Clock.cpp
-        displayapp/screens/Tile.cpp
-        displayapp/screens/InfiniPaint.cpp
-        displayapp/screens/Paddle.cpp
-        displayapp/screens/StopWatch.cpp
-        displayapp/screens/BatteryIcon.cpp
-        displayapp/screens/BleIcon.cpp
-        displayapp/screens/NotificationIcon.cpp
-        displayapp/screens/SystemInfo.cpp
-        displayapp/screens/Label.cpp
-        displayapp/screens/FirmwareUpdate.cpp
-        displayapp/screens/Music.cpp
-        displayapp/screens/Weather.cpp
-        displayapp/screens/Navigation.cpp
-        displayapp/screens/Metronome.cpp
-        displayapp/screens/Motion.cpp
-        displayapp/screens/FirmwareValidation.cpp
-        displayapp/screens/ApplicationList.cpp
-        displayapp/screens/Notifications.cpp
-        displayapp/screens/Twos.cpp
-        displayapp/screens/HeartRate.cpp
-        displayapp/screens/Motion.cpp
-        displayapp/screens/FlashLight.cpp
-        displayapp/screens/List.cpp
-        displayapp/screens/CheckboxList.cpp
-        displayapp/screens/BatteryInfo.cpp
-        displayapp/screens/Steps.cpp
-        displayapp/screens/Timer.cpp
-        displayapp/screens/PassKey.cpp
-        displayapp/screens/Error.cpp
-        displayapp/screens/Alarm.cpp
-        displayapp/screens/Styles.cpp
-        displayapp/Colors.cpp
-        displayapp/widgets/Counter.cpp
-        displayapp/widgets/PageIndicator.cpp
-        displayapp/widgets/DotIndicator.cpp
-        displayapp/widgets/StatusIcons.cpp
+        displayapp/screens/Screen.cc
+        displayapp/screens/ScreenGraph.cc
+        displayapp/screens/DefaultScreenGraph.cc
+        displayapp/screens/WatchFace.cc
+        displayapp/screens/AnalogWatchFace.cc
+        displayapp/screens/BinaryWatchFace.cc
+        displayapp/screens/FirmwareUpdateScreen.cc
+        displayapp/screens/FirmwareValidationScreen.cc
+        displayapp/screens/SettingsScreen.cc
+        displayapp/screens/SystemInfoScreen.cc
+        displayapp/screens/BrightnessScreen.cc
+        displayapp/screens/WakeUpModeScreen.cc
+        displayapp/screens/StepsGoalScreen.cc
 
-        ## Settings
-        displayapp/screens/settings/QuickSettings.cpp
-        displayapp/screens/settings/Settings.cpp
-        displayapp/screens/settings/SettingWatchFace.cpp
-        displayapp/screens/settings/SettingTimeFormat.cpp
-        displayapp/screens/settings/SettingWakeUp.cpp
-        displayapp/screens/settings/SettingDisplay.cpp
-        displayapp/screens/settings/SettingSteps.cpp
-        displayapp/screens/settings/SettingSetDateTime.cpp
-        displayapp/screens/settings/SettingSetDate.cpp
-        displayapp/screens/settings/SettingSetTime.cpp
-        displayapp/screens/settings/SettingChimes.cpp
-        displayapp/screens/settings/SettingShakeThreshold.cpp
-        displayapp/screens/settings/SettingBluetooth.cpp
+        displayapp/images/image_analog_watchface_bg.c
+        displayapp/images/image_binary_watchface_bg.c
 
-        ## Watch faces
-        displayapp/icons/bg_clock.c
-        displayapp/screens/WatchFaceAnalog.cpp
-        displayapp/screens/WatchFaceDigital.cpp
-        displayapp/screens/WatchFaceInfineat.cpp
-        displayapp/screens/WatchFaceTerminal.cpp
-        displayapp/screens/WatchFacePineTimeStyle.cpp
-        displayapp/screens/WatchFaceCasioStyleG7710.cpp
+        displayapp/fonts/jetbrains_mono_bold_20.c
+        displayapp/fonts/font_dvs_ascii_12.c
+        displayapp/fonts/font_dvs_ascii_14.c
+        displayapp/fonts/font_dvs_ascii_16.c
+        displayapp/fonts/font_dvsb_caps_16.c
+        displayapp/fonts/font_dvsb_ascii_18.c
+        displayapp/fonts/font_dvs_digits_20.c
+        displayapp/fonts/font_dvs_digits_24.c
+        displayapp/fonts/font_symbols_14.c
+        displayapp/fonts/font_symbols_32.c
+        displayapp/fonts/FontAwesomeBrands24.c
+        displayapp/fonts/FontAwesomeRegular24.c
+        displayapp/fonts/FontAwesomeSolid24.c
+        displayapp/fonts/FontBoldDigits96.c
 
         ##
 
@@ -491,6 +460,7 @@ list(APPEND SOURCE_FILES
         heartratetask/HeartRateTask.cpp
         components/heartrate/HeartRateController.cpp
         components/heartrate/Ppg.cpp
+        components/ComponentContainer.cc
 
         buttonhandler/ButtonHandler.cpp
         touchhandler/TouchHandler.cpp
@@ -591,38 +561,24 @@ set(INCLUDE_FILES
         BootloaderVersion.h
         logging/Logger.h
         logging/NrfLogger.h
+        displayapp/FullRefreshProvider.h
         displayapp/DisplayApp.h
         displayapp/Messages.h
         displayapp/TouchEvents.h
         displayapp/screens/Screen.h
-        displayapp/screens/Clock.h
-        displayapp/screens/Tile.h
-        displayapp/screens/InfiniPaint.h
-        displayapp/screens/StopWatch.h
-        displayapp/screens/Paddle.h
-        displayapp/screens/BatteryIcon.h
-        displayapp/screens/BleIcon.h
-        displayapp/screens/NotificationIcon.h
-        displayapp/screens/SystemInfo.h
-        displayapp/screens/ScreenList.h
-        displayapp/screens/Label.h
-        displayapp/screens/FirmwareUpdate.h
-        displayapp/screens/FirmwareValidation.h
-        displayapp/screens/ApplicationList.h
-        displayapp/screens/CheckboxList.h
-        displayapp/Apps.h
-        displayapp/WatchFaces.h
-        displayapp/screens/Notifications.h
-        displayapp/screens/HeartRate.h
-        displayapp/screens/Metronome.h
-        displayapp/screens/Motion.h
-        displayapp/screens/Timer.h
-        displayapp/screens/Alarm.h
-        displayapp/Colors.h
-        displayapp/widgets/Counter.h
-        displayapp/widgets/PageIndicator.h
-        displayapp/widgets/DotIndicator.h
-        displayapp/widgets/StatusIcons.h
+        displayapp/screens/ScreenGraph.h
+        #displayapp/screens/DefaultScreenGraph.h
+        displayapp/screens/WatchFace.h
+        #displayapp/screens/AnalogWatchFace.h
+        #displayapp/screens/BinaryWatchFace.h
+        #displayapp/screens/FirmwareUpdateScreen.h
+        #displayapp/screens/FirmwareValidationScreen.h
+        #displayapp/screens/SettingsScreen.h
+        #displayapp/screens/SystemInfoScreen.h
+        #displayapp/screens/BrightnessScreen.h
+        #displayapp/screens/WakeUpModeScreen.h
+        #displayapp/screens/StepsGoalScreen.h
+
         drivers/St7789.h
         drivers/SpiNorFlash.h
         drivers/SpiMaster.h
@@ -845,14 +801,14 @@ if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   # add_definitions(-DMYNEWT_VAL_BLE_HS_LOG_LVL=0)
 endif()
 
-add_subdirectory(displayapp/fonts)
-target_compile_options(infinitime_fonts PUBLIC
-        ${COMMON_FLAGS}
-        $<$<CONFIG:DEBUG>: ${DEBUG_FLAGS}>
-        $<$<CONFIG:RELEASE>: ${RELEASE_FLAGS}>
-        $<$<COMPILE_LANGUAGE:CXX>: ${CXX_FLAGS}>
-        $<$<COMPILE_LANGUAGE:ASM>: ${ASM_FLAGS}>
-        )
+#add_subdirectory(displayapp/fonts)
+#target_compile_options(infinitime_fonts PUBLIC
+#        ${COMMON_FLAGS}
+#        $<$<CONFIG:DEBUG>: ${DEBUG_FLAGS}>
+#        $<$<CONFIG:RELEASE>: ${RELEASE_FLAGS}>
+#        $<$<COMPILE_LANGUAGE:CXX>: ${CXX_FLAGS}>
+#        $<$<COMPILE_LANGUAGE:ASM>: ${ASM_FLAGS}>
+#        )
 
 # NRF SDK
 add_library(nrf-sdk STATIC ${SDK_SOURCE_FILES})
@@ -930,7 +886,7 @@ set(EXECUTABLE_FILE_NAME ${EXECUTABLE_NAME}-${pinetime_VERSION_MAJOR}.${pinetime
 set(NRF5_LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/gcc_nrf52.ld")
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 set_target_properties(${EXECUTABLE_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_FILE_NAME})
-target_link_libraries(${EXECUTABLE_NAME} nimble nrf-sdk lvgl littlefs QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_NAME} nimble nrf-sdk lvgl littlefs QCBOR)
 target_compile_options(${EXECUTABLE_NAME} PUBLIC
         ${COMMON_FLAGS}
         ${WARNING_FLAGS}
@@ -964,7 +920,7 @@ set(IMAGE_MCUBOOT_FILE_NAME_BIN ${EXECUTABLE_MCUBOOT_NAME}-image-${pinetime_VERS
 set(DFU_MCUBOOT_FILE_NAME ${EXECUTABLE_MCUBOOT_NAME}-dfu-${pinetime_VERSION_MAJOR}.${pinetime_VERSION_MINOR}.${pinetime_VERSION_PATCH}.zip)
 set(NRF5_LINKER_SCRIPT_MCUBOOT "${CMAKE_SOURCE_DIR}/gcc_nrf52-mcuboot.ld")
 add_executable(${EXECUTABLE_MCUBOOT_NAME} ${SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_MCUBOOT_NAME} nimble nrf-sdk lvgl littlefs QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_MCUBOOT_NAME} nimble nrf-sdk lvgl littlefs QCBOR)
 set_target_properties(${EXECUTABLE_MCUBOOT_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_MCUBOOT_FILE_NAME})
 target_compile_options(${EXECUTABLE_MCUBOOT_NAME} PUBLIC
         ${COMMON_FLAGS}
@@ -1006,7 +962,7 @@ endif()
 set(EXECUTABLE_RECOVERY_NAME "pinetime-recovery")
 set(EXECUTABLE_RECOVERY_FILE_NAME ${EXECUTABLE_RECOVERY_NAME}-${pinetime_VERSION_MAJOR}.${pinetime_VERSION_MINOR}.${pinetime_VERSION_PATCH})
 add_executable(${EXECUTABLE_RECOVERY_NAME} ${RECOVERY_SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_RECOVERY_NAME} nimble nrf-sdk littlefs QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_RECOVERY_NAME} nimble nrf-sdk littlefs QCBOR)
 set_target_properties(${EXECUTABLE_RECOVERY_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_RECOVERY_FILE_NAME})
 target_compile_definitions(${EXECUTABLE_RECOVERY_NAME} PUBLIC "PINETIME_IS_RECOVERY")
 target_compile_options(${EXECUTABLE_RECOVERY_NAME} PUBLIC
@@ -1038,7 +994,7 @@ set(IMAGE_RECOVERY_MCUBOOT_FILE_NAME ${EXECUTABLE_RECOVERY_MCUBOOT_NAME}-image-$
 set(IMAGE_RECOVERY_MCUBOOT_FILE_NAME_HEX ${IMAGE_RECOVERY_MCUBOOT_FILE_NAME}.hex)
 set(DFU_RECOVERY_MCUBOOT_FILE_NAME ${EXECUTABLE_RECOVERY_MCUBOOT_NAME}-dfu-${pinetime_VERSION_MAJOR}.${pinetime_VERSION_MINOR}.${pinetime_VERSION_PATCH}.zip)
 add_executable(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} ${RECOVERY_SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} nimble nrf-sdk littlefs QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} nimble nrf-sdk littlefs QCBOR)
 set_target_properties(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_RECOVERY_MCUBOOT_FILE_NAME})
 target_compile_definitions(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} PUBLIC "PINETIME_IS_RECOVERY")
 target_compile_options(${EXECUTABLE_RECOVERY_MCUBOOT_NAME} PUBLIC
@@ -1078,7 +1034,7 @@ endif()
 set(EXECUTABLE_RECOVERYLOADER_NAME "pinetime-recovery-loader")
 set(EXECUTABLE_RECOVERYLOADER_FILE_NAME ${EXECUTABLE_RECOVERYLOADER_NAME}-${pinetime_VERSION_MAJOR}.${pinetime_VERSION_MINOR}.${pinetime_VERSION_PATCH})
 add_executable(${EXECUTABLE_RECOVERYLOADER_NAME} ${RECOVERYLOADER_SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_RECOVERYLOADER_NAME} nrf-sdk QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_RECOVERYLOADER_NAME} nrf-sdk QCBOR)
 set_target_properties(${EXECUTABLE_RECOVERYLOADER_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_RECOVERYLOADER_FILE_NAME})
 target_compile_options(${EXECUTABLE_RECOVERYLOADER_NAME} PUBLIC
         ${COMMON_FLAGS}
@@ -1113,7 +1069,7 @@ set(IMAGE_MCUBOOT_RECOVERYLOADER_FILE_NAME ${EXECUTABLE_MCUBOOT_RECOVERYLOADER_N
 set(IMAGE_MCUBOOT_RECOVERYLOADER_FILE_NAME_HEX ${IMAGE_MCUBOOT_RECOVERYLOADER_FILE_NAME}.hex)
 set(DFU_MCUBOOT_RECOVERYLOADER_FILE_NAME ${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME}-dfu-${pinetime_VERSION_MAJOR}.${pinetime_VERSION_MINOR}.${pinetime_VERSION_PATCH}.zip)
 add_executable(${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME} ${RECOVERYLOADER_SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME} nrf-sdk QCBOR infinitime_fonts)
+target_link_libraries(${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME} nrf-sdk QCBOR)
 set_target_properties(${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME} PROPERTIES OUTPUT_NAME ${EXECUTABLE_MCUBOOT_RECOVERYLOADER_FILE_NAME})
 target_compile_options(${EXECUTABLE_MCUBOOT_RECOVERYLOADER_NAME} PUBLIC
         ${COMMON_FLAGS}

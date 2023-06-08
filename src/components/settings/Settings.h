@@ -3,7 +3,7 @@
 #include <bitset>
 #include "components/brightness/BrightnessController.h"
 #include "components/fs/FS.h"
-#include "displayapp/WatchFaces.h"
+//#include "displayapp/WatchFaces.h"
 
 namespace Pinetime {
   namespace Controllers {
@@ -64,14 +64,16 @@ namespace Pinetime {
       void Init();
       void SaveSettings();
 
-      void SetWatchFace(Pinetime::Applications::WatchFace face) {
+      // void SetWatchFace(Pinetime::Applications::WatchFace face) {
+      void SetClockFace(uint8_t face) {
         if (face != settings.watchFace) {
           settingsChanged = true;
         }
         settings.watchFace = face;
       };
 
-      Pinetime::Applications::WatchFace GetWatchFace() const {
+      // Pinetime::Applications::WatchFace GetWatchFace() const {
+      uint8_t GetClockFace() const {
         return settings.watchFace;
       };
 
@@ -289,7 +291,8 @@ namespace Pinetime {
         ClockType clockType = ClockType::H24;
         Notification notificationStatus = Notification::On;
 
-        Pinetime::Applications::WatchFace watchFace = Pinetime::Applications::WatchFace::Digital;
+        //Pinetime::Applications::WatchFace watchFace = Pinetime::Applications::WatchFace::Digital;
+        uint8_t watchFace = 0;
         ChimesOption chimesOption = ChimesOption::None;
 
         PineTimeStyle PTS;
