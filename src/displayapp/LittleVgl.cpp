@@ -1,5 +1,5 @@
 #include "displayapp/LittleVgl.h"
-#include "displayapp/InfiniTimeTheme.h"
+//#include "displayapp/InfiniTimeTheme.h"
 
 #include <FreeRTOS.h>
 #include <task.h>
@@ -11,8 +11,8 @@ using namespace Pinetime::Components;
 
 namespace {
   void InitTheme() {
-    lv_theme_t* theme = lv_pinetime_theme_init();
-    lv_theme_set_act(theme);
+    // lv_theme_t* theme = lv_pinetime_theme_init();
+    // lv_theme_set_act(theme);
   }
 
   lv_fs_res_t lvglOpen(lv_fs_drv_t* drv, void* file_p, const char* path, lv_fs_mode_t /*mode*/) {

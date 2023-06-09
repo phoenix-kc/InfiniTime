@@ -388,8 +388,8 @@ list(APPEND SOURCE_FILES
 
         displayapp/images/image_analog_watchface_bg.c
         displayapp/images/image_binary_watchface_bg.c
+        displayapp/images/image_black_block.c
 
-        displayapp/fonts/jetbrains_mono_bold_20.c
         displayapp/fonts/font_dvs_ascii_12.c
         displayapp/fonts/font_dvs_ascii_14.c
         displayapp/fonts/font_dvs_ascii_16.c
@@ -451,7 +451,7 @@ list(APPEND SOURCE_FILES
         FreeRTOS/port_cmsis.c
 
         displayapp/LittleVgl.cpp
-        displayapp/InfiniTimeTheme.cpp
+        #displayapp/InfiniTimeTheme.cpp
 
         systemtask/SystemTask.cpp
         systemtask/SystemMonitor.cpp
@@ -620,7 +620,7 @@ set(INCLUDE_FILES
         FreeRTOS/portmacro.h
         FreeRTOS/portmacro_cmsis.h
         displayapp/LittleVgl.h
-        displayapp/InfiniTimeTheme.h
+        #displayapp/InfiniTimeTheme.h
         systemtask/SystemTask.h
         systemtask/SystemMonitor.h
         displayapp/screens/Symbols.h
