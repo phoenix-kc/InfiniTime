@@ -388,7 +388,6 @@ list(APPEND SOURCE_FILES
 
         displayapp/images/image_analog_watchface_bg.c
         displayapp/images/image_binary_watchface_bg.c
-        displayapp/images/image_black_block.c
 
         displayapp/fonts/font_dvs_ascii_12.c
         displayapp/fonts/font_dvs_ascii_14.c
