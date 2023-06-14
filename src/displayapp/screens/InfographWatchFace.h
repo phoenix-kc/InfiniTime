@@ -1,20 +1,20 @@
-#ifndef ANALOGWATCHFACE_H
-#define ANALOGWATCHFACE_H
+#ifndef INFOGRAPHWATCHFACE_H
+#define INFOGRAPHWATCHFACE_H
 
 
 #include "WatchFace.h"
 
 
 
-class AnalogWatchFace : public WatchFace
+class InfographWatchFace : public WatchFace
 {
 public:
 
-        AnalogWatchFace(ScreenGraph *screenGraph, ComponentContainer *components);
+        InfographWatchFace(ScreenGraph *screenGraph, ComponentContainer *components);
 
 protected:
 
-        ScreenGraph::ScreenTag screenTag() const override { return ScreenGraph::ScreenTag::AnalogWatchFace; }
+        ScreenGraph::ScreenTag screenTag() const override { return ScreenGraph::ScreenTag::InfographWatchFace; }
 
         void dayChanged(bool yearChanged, bool monthChanged) override;
         void timeChanged(bool hourChanged, bool minuteChanged) override;
@@ -60,4 +60,4 @@ private:
         uint16_t stepsEndAngle(uint32_t steps);
 };
 
-#endif // ANALOGWATCHFACE_H
+#endif // INFOGRAPHWATCHFACE_H

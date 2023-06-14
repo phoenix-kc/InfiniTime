@@ -21,7 +21,7 @@ public:
                 None,
                 Previous,
                 DefaultWatchFace,
-                AnalogWatchFace,
+                InfographWatchFace,
                 BinaryWatchFace,
                 FirmwareUpdate,
                 FirmwareValidation,

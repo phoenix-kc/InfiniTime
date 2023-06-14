@@ -3,7 +3,7 @@
 #include "Screen.h"
 
 #include "displayapp/FullRefreshProvider.h"
-#include "displayapp/screens/AnalogWatchFace.h"
+#include "displayapp/screens/InfographWatchFace.h"
 #include "displayapp/screens/BinaryWatchFace.h"
 #include "displayapp/screens/FirmwareUpdateScreen.h"
 #include "displayapp/screens/FirmwareValidationScreen.h"
@@ -411,8 +411,8 @@ Screen *ScreenGraph::createScreen(ScreenTag tag)
 {
         switch (tag)
         {
-        case ScreenTag::AnalogWatchFace:
-                return new AnalogWatchFace(this, _components);
+        case ScreenTag::InfographWatchFace:
+                return new InfographWatchFace(this, _components);
         case ScreenTag::BinaryWatchFace:
                 return new BinaryWatchFace(this, _components);
         case ScreenTag::FirmwareUpdate:

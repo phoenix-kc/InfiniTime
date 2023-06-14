@@ -1,4 +1,4 @@
-#include "AnalogWatchFace.h"
+#include "InfographWatchFace.h"
 
 #include <cmath>
 #include <lvgl/lvgl.h>
@@ -23,11 +23,11 @@ using namespace Pinetime::Controllers;
 #define SYMBOL_DEGREES   "\xC2\xB0"
 
 
-LV_IMG_DECLARE(image_analog_watchface_bg);
+LV_IMG_DECLARE(image_infograph_watchface_bg);
 
 
 
-AnalogWatchFace::AnalogWatchFace(ScreenGraph *screenGraph, ComponentContainer *components)
+InfographWatchFace::InfographWatchFace(ScreenGraph *screenGraph, ComponentContainer *components)
         : WatchFace(screenGraph, components)
 {
         // initialize
@@ -44,7 +44,7 @@ AnalogWatchFace::AnalogWatchFace(ScreenGraph *screenGraph, ComponentContainer *c
 
         // set the watch's background image
         lv_obj_t* backgroundImage = lv_img_create(lv_scr_act(), nullptr);
-        lv_img_set_src(backgroundImage, &image_analog_watchface_bg);
+        lv_img_set_src(backgroundImage, &image_infograph_watchface_bg);
         lv_obj_align(backgroundImage, nullptr, LV_ALIGN_CENTER, 0, 0);
 
         // add the day-of-week label
@@ -146,7 +146,7 @@ AnalogWatchFace::AnalogWatchFace(ScreenGraph *screenGraph, ComponentContainer *c
 }
 
 
-void AnalogWatchFace::dayChanged(bool yearChanged, bool monthChanged)
+void InfographWatchFace::dayChanged(bool yearChanged, bool monthChanged)
 {
         (void)yearChanged;
         (void)monthChanged;
@@ -159,7 +159,7 @@ void AnalogWatchFace::dayChanged(bool yearChanged, bool monthChanged)
 }
 
 
-void AnalogWatchFace::timeChanged(bool hourChanged, bool minuteChanged)
+void InfographWatchFace::timeChanged(bool hourChanged, bool minuteChanged)
 {
         // update the hands
         updateHands(hourChanged, minuteChanged);
@@ -174,14 +174,14 @@ void AnalogWatchFace::timeChanged(bool hourChanged, bool minuteChanged)
 }
 
 
-void AnalogWatchFace::lockedStateChanged()
+void InfographWatchFace::lockedStateChanged()
 {
         lv_label_set_text_static(_lockSymbol, locked() ? SYMBOL_LOCK : "");
         lv_obj_align(_lockSymbol, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 }
 
 
-void AnalogWatchFace::batteryPercentChanged()
+void InfographWatchFace::batteryPercentChanged()
 {
         int angle = static_cast<int>(static_cast<double>(batteryPercent()) / 100.0 * 30.0 + 0.5);
         if (angle > 30)
@@ -193,7 +193,7 @@ void AnalogWatchFace::batteryPercentChanged()
 }
 
 
-void AnalogWatchFace::updateHands(bool hourChanged, bool minuteChanged)
+void InfographWatchFace::updateHands(bool hourChanged, bool minuteChanged)
 {
         int16_t cx = LV_HOR_RES / 2;
         int16_t cy = LV_VER_RES / 2;
@@ -254,7 +254,7 @@ void AnalogWatchFace::updateHands(bool hourChanged, bool minuteChanged)
 }
 
 
-void AnalogWatchFace::updatePowerAndBleSymbols()
+void InfographWatchFace::updatePowerAndBleSymbols()
 {
         lv_label_set_text_static(_powerPresentSymbol, powerPresent() ? SYMBOL_PLUG : "");
         lv_label_set_text_static(_bleSymbol, bleConnected() ? SYMBOL_BLUETOOTH : "");
@@ -266,7 +266,7 @@ void AnalogWatchFace::updatePowerAndBleSymbols()
 }
 
 
-int16_t AnalogWatchFace::roundedCoord(double value)
+int16_t InfographWatchFace::roundedCoord(double value)
 {
         if (value < 0.0)
                 return static_cast<int16_t>(value - 0.5);
@@ -274,7 +274,7 @@ int16_t AnalogWatchFace::roundedCoord(double value)
                 return static_cast<int16_t>(value + 0.5);
 }
 
-uint16_t AnalogWatchFace::stepsEndAngle(uint32_t steps)
+uint16_t InfographWatchFace::stepsEndAngle(uint32_t steps)
 {
         double s = static_cast<double>(steps);
         double g = static_cast<double>(this->components()->settings()->GetStepsGoal());

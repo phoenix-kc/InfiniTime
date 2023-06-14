@@ -376,7 +376,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/ScreenGraph.cc
         displayapp/screens/DefaultScreenGraph.cc
         displayapp/screens/WatchFace.cc
-        displayapp/screens/AnalogWatchFace.cc
+        displayapp/screens/InfographWatchFace.cc
         displayapp/screens/BinaryWatchFace.cc
         displayapp/screens/FirmwareUpdateScreen.cc
         displayapp/screens/FirmwareValidationScreen.cc
@@ -386,7 +386,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/WakeUpModeScreen.cc
         displayapp/screens/StepsGoalScreen.cc
 
-        displayapp/images/image_analog_watchface_bg.c
+        displayapp/images/image_infograph_watchface_bg.c
         displayapp/images/image_binary_watchface_bg.c
 
         displayapp/fonts/font_dvs_ascii_12.c
@@ -568,7 +568,7 @@ set(INCLUDE_FILES
         displayapp/screens/ScreenGraph.h
         #displayapp/screens/DefaultScreenGraph.h
         displayapp/screens/WatchFace.h
-        #displayapp/screens/AnalogWatchFace.h
+        #displayapp/screens/InfographWatchFace.h
         #displayapp/screens/BinaryWatchFace.h
         #displayapp/screens/FirmwareUpdateScreen.h
         #displayapp/screens/FirmwareValidationScreen.h
