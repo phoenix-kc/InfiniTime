@@ -12,13 +12,17 @@ DefaultScreenGraph::DefaultScreenGraph(FullRefreshProvider *refreshProvider, Com
         // set initial screen
         switchScreen(ScreenTag::DefaultWatchFace, 1, TransitionEffect::None);
 
+        // transitions from UtilityWatchFace
+        addSwipeTransition(ScreenTag::UtilityWatchFace, ScreenTag::Settings, Screen::SwipeDirection::Up);
+        addSwipeTransition(ScreenTag::UtilityWatchFace, ScreenTag::InfographWatchFace, Screen::SwipeDirection::Left);
+
         // transitions from InfographWatchFace
         addSwipeTransition(ScreenTag::InfographWatchFace, ScreenTag::Settings, Screen::SwipeDirection::Up);
         addSwipeTransition(ScreenTag::InfographWatchFace, ScreenTag::BinaryWatchFace, Screen::SwipeDirection::Left);
 
         // transitions from BinaryWatchFace
         addSwipeTransition(ScreenTag::BinaryWatchFace, ScreenTag::Settings, Screen::SwipeDirection::Up);
-        addSwipeTransition(ScreenTag::BinaryWatchFace, ScreenTag::InfographWatchFace, Screen::SwipeDirection::Left);
+        addSwipeTransition(ScreenTag::BinaryWatchFace, ScreenTag::UtilityWatchFace, Screen::SwipeDirection::Left);
 
         // transitions from FirmwareValidation
         addButtonTransition(ScreenTag::FirmwareValidation, ScreenTag::DefaultWatchFace);
@@ -51,8 +55,10 @@ ScreenGraph::ScreenTag DefaultScreenGraph::watchFaceScreenTagByIndex(uint8_t wat
         switch (watchFaceIndex)
         {
         case 1:
+                return ScreenTag::InfographWatchFace;
+        case 2:
                 return ScreenTag::BinaryWatchFace;
         default:
-                return ScreenTag::InfographWatchFace;
+                return ScreenTag::UtilityWatchFace;
         }
 }

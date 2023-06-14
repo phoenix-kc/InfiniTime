@@ -54,7 +54,7 @@
 #include "components/ComponentContainer.h"
 #include "displayapp/screens/DefaultScreenGraph.h"
 
-#define INITIAL_SCREEN   ScreenGraph::ScreenTag::InfographWatchFace
+#define INITIAL_SCREEN   ScreenGraph::ScreenTag::UtilityWatchFace
 
 
 using namespace Pinetime::Applications;

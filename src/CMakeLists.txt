@@ -376,6 +376,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/ScreenGraph.cc
         displayapp/screens/DefaultScreenGraph.cc
         displayapp/screens/WatchFace.cc
+        displayapp/screens/UtilityWatchFace.cc
         displayapp/screens/InfographWatchFace.cc
         displayapp/screens/BinaryWatchFace.cc
         displayapp/screens/FirmwareUpdateScreen.cc
@@ -386,6 +387,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/WakeUpModeScreen.cc
         displayapp/screens/StepsGoalScreen.cc
 
+        displayapp/images/image_utility_watchface_bg.c
         displayapp/images/image_infograph_watchface_bg.c
         displayapp/images/image_binary_watchface_bg.c
 
